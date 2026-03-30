@@ -1,0 +1,220 @@
+/* Reset global - Remove margens e paddings padrão de todos os elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos do corpo da página */
+body {
+  /* Degradê de fundo: LIGHT MODE - branco para preto */
+  background: linear-gradient(to bottom, #ffffff 0%, #cccccc 15%, #e0e0e0 30%, #333333 50%, #000000 100%);
+  /* Fonte moderna e legível */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Cor do texto escura para contraste com fundo claro */
+  color: #333333;
+  /* Altura mínima de 100% da viewport */
+  min-height: 100vh;
+  /* Transição suave ao alternar temas */
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Container principal - Centraliza o conteúdo vertical e horizontalmente */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* Cabeçalho da página */
+header {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+/* Título principal */
+header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  color: #333333;
+}
+
+/* Botão de alternância de tema */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(51, 51, 51, 0.9);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+/* Efeito hover no botão toggler */
+.theme-toggle:hover {
+  background-color: rgba(85, 85, 85, 0.95);
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Ícone do tema com rotação */
+.theme-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(20deg);
+}
+
+/* Container da lista de usuários */
+.lista-usuarios {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Lista não ordenada dos usuários */
+.lista-usuarios ul {
+  list-style: none;
+  /* Grid responsivo para organizar os cartões */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Estilos para cada cartão de usuário */
+.usuario {
+  text-align: center;
+  cursor: pointer;
+  /* Transições suaves para efeitos de hover */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Efeito de hover no cartão - zoom e brilho */
+.usuario:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Container da imagem do usuário */
+.usuario figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  /* Sombra inicial */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  /* Transição para mudança de sombra no hover */
+  transition: box-shadow 0.3s ease;
+}
+
+/* Efeito de hover na figura - sombra mais intensa */
+.usuario:hover figure {
+  box-shadow: 0 12px 24px rgba(245, 245, 245, 0.6);
+}
+
+/* Imagem do usuário */
+.usuario img {
+  width: 200px;
+  height: 300px;
+  /* Mantém proporção e corta se necessário */
+  object-fit: cover;
+  display: block;
+}
+
+/* Legenda da imagem (nome do usuário) */
+.usuario figcaption {
+  /* Degradê sobreposto para legibilidade */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 20px 15px 15px;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  /* Posicionamento sobre a imagem */
+  margin-top: -60px;
+  padding-top: 80px;
+  color: #ffffff;
+}
+
+/* Design responsivo para tablets */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 36px;
+  }
+
+  .lista-usuarios ul {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+
+  .usuario img {
+    width: 150px;
+    height: 225px;
+  }
+}
+
+/* Design responsivo para celulares */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  .lista-usuarios ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .usuario img {
+    width: 120px;
+    height: 180px;
+  }
+
+  .usuario figcaption {
+    font-size: 14px;
+  }
+}
+
+/* ========== DARK MODE ========== */
+
+body.dark-mode {
+  background: linear-gradient(to bottom, #000000 0%, #000000 50%, #333333 70%, #cccccc 85%, #ffffff 100%);
+  color: #ffffff;
+}
+
+body.dark-mode header h1 {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #ffffff;
+  color: #333333;
+  border: 2px solid #cccccc;
+}
+
+body.dark-mode .theme-toggle:hover {
+  background-color: #dddddd;
+  color: #333333;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .usuario {
+  color: #ffffff;
+}
